@@ -204,3 +204,36 @@ console.log(body)
     attachments: [generateQRCode(paymentUrl)]
   });
 }
+
+function sendEmailShortenedTime(mail) {
+  var body = `
+<html>
+<head>
+<style>
+table, th, td {
+  padding-left: 5pt;
+  padding-right: 5pt;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<h1>Zdar,</h1>
+<p>ďakujeme ti za registráciu na skautský tábor.</p>
+
+<p>Keďže Ste si zvolili možnosť "Na kratší čas", tak je potrebné, <b>aby Ste sa ozvali táborovému vodcovi pre vyriešenie sumy - Henrik Drozd.</b> Prosíme teda o bezodkladné skontaktovanie, ďakujeme.</p>
+
+Slovenský skauting, 80.zbor Ginko Piešťany
+
+</body>
+</html>`;
+  
+  MailApp.sendEmail({
+    to: mail,
+    subject: `Tábor ${year}`,
+    htmlBody: body
+  });
+}
+
