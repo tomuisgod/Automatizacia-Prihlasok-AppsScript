@@ -47,6 +47,17 @@ function calculate_payment(pobyty, veky) {
       case 'Včielky a vĺčatá 14.7. - 19.7.':
         sum += 75;
         break;
+      
+      case 'Dospelí a rodiny 14.7. - 19.7.':
+        if (veky[i] <= 1) break;
+        if (veky[i] <= 6) {
+          sum += 35;
+        } else if (veky[i] <= 13) {
+          sum += 45;
+        } else {
+          sum += 65
+        }
+        break;
 
       default:
         throw new Error(`Unexpected pobyt: '${pobyty[i]}'`);
